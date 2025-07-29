@@ -782,6 +782,7 @@ pub unsafe fn init() {
         std::ptr::null(),
         Some(validate_layer_sizes),
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
+        //1
     );
 }
 
