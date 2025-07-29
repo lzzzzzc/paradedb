@@ -46,6 +46,7 @@ use tokenizers::{SearchNormalizer, SearchTokenizer};
 */
 
 static mut RELOPT_KIND_PDB: pg_sys::relopt_kind::Type = 0;
+//static mut RELOPT_KIND_PDB: u32 = 0;
 
 #[allow(clippy::identity_op)]
 pub(crate) const DEFAULT_FOREGROUND_LAYER_SIZES: &[u64] = &[
@@ -692,7 +693,8 @@ pub unsafe fn init() {
     // adding our own relopt type because zombodb does, but one of the built-in Postgres ones might be more appropriate
     RELOPT_KIND_PDB = pg_sys::add_reloption_kind();
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "text_fields".as_pg_cstr(),
         "JSON string specifying how text fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -700,7 +702,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "numeric_fields".as_pg_cstr(),
         "JSON string specifying how numeric fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -708,7 +711,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "boolean_fields".as_pg_cstr(),
         "JSON string specifying how boolean fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -716,7 +720,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "json_fields".as_pg_cstr(),
         "JSON string specifying how JSON fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -724,7 +729,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "range_fields".as_pg_cstr(),
         "JSON string specifying how range fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -732,7 +738,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "datetime_fields".as_pg_cstr(),
         "JSON string specifying how date fields should be indexed".as_pg_cstr(),
         std::ptr::null(),
@@ -740,7 +747,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "key_field".as_pg_cstr(),
         "Column name as a string specify the unique identifier for a row".as_pg_cstr(),
         std::ptr::null(),
@@ -748,7 +756,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "layer_sizes".as_pg_cstr(),
         "The sizes of each layer to merge in the foreground".as_pg_cstr(),
         std::ptr::null(),
@@ -756,7 +765,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_int_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "target_segment_count".as_pg_cstr(),
         "When creating or reindexing, how many segments should be created".as_pg_cstr(),
         0,
@@ -765,7 +775,8 @@ pub unsafe fn init() {
         pg_sys::AccessExclusiveLock as pg_sys::LOCKMODE,
     );
     pg_sys::add_string_reloption(
-        RELOPT_KIND_PDB,
+        // 参数错误，加了个转换方法
+        RELOPT_KIND_PDB.try_into().unwrap(),
         "background_layer_sizes".as_pg_cstr(),
         "The sizes of each layer to merge in the background".as_pg_cstr(),
         std::ptr::null(),

@@ -10,6 +10,7 @@ build = "build.rs"
 crate-type = ["cdylib", "rlib"]
 
 [features]
+# features用于可选模块的编译
 default = ["pg17"]
 pg14 = ["pgrx/pg14", "pgrx-tests/pg14"]
 pg15 = ["pgrx/pg15", "pgrx-tests/pg15"]
